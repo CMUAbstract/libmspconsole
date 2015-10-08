@@ -1,16 +1,20 @@
 // Tiny printf implementation by oPossum from here:
 // http://forum.43oh.com/topic/1289-tiny-printf-c-version/#entry10652
 //
-// NOTE: We are not using the libc printf because of this nasty bug:
+// NOTE: We are not using the libc printf because it's huge:
 // https://e2e.ti.com/support/development_tools/compiler/f/343/t/442632
 
 #include <stdlib.h>
 #include <stdarg.h>
 
+// TODO: temp
+#include <msp430.h>
+
 int putc(int c, void *stream);
+int putchar(int c);
 int puts(const char *);
 
-#define PUTC(c) putc(c, (void *)0xdeadbeef); // silence warning about non-null
+#define PUTC(c) putchar(c);
 
 static const unsigned long dv[] = {
 //  4294967296      // 32 bit unsigned max
@@ -54,7 +58,7 @@ int printf(const char *format, ...)
     char c;
     int i;
     long n;
-    
+
     va_list a;
     va_start(a, format);
     while((c = *format++)) {
