@@ -10,7 +10,7 @@ int putchar(int c)
     return c;
 }
 
-int puts(const char *ptr)
+int puts_no_newline(const char *ptr)
 {
     unsigned len = 0;
     const char *p = ptr;
@@ -19,8 +19,17 @@ int puts(const char *ptr)
         len++;
 
     UART_send((uint8_t *)ptr, len);
+    return len;
+}
+
+int puts(const char *ptr)
+{
+    unsigned len;
+
+    len = puts_no_newline(ptr);
 
     // Semantics of puts are annoying...
     putchar('\n');
+
     return len;
 }

@@ -13,6 +13,7 @@
 int putc(int c, void *stream);
 int putchar(int c);
 int puts(const char *);
+int puts_no_newline(const char *);
 
 #define PUTC(c) putchar(c);
 
@@ -65,7 +66,7 @@ int printf(const char *format, ...)
         if(c == '%') {
             switch(c = *format++) {
                 case 's':                       // String
-                    puts(va_arg(a, char*));
+                    puts_no_newline(va_arg(a, char*));
                     break;
                 case 'c':                       // Char
                     PUTC(va_arg(a, int)); // TODO: 'char' generated a warning
