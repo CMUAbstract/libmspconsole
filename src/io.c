@@ -3,6 +3,11 @@
 
 #include <stdlib.h>
 
+void printf_init()
+{
+    UART_init();
+}
+
 int putchar(int c)
 {
     uint8_t ch = c;
