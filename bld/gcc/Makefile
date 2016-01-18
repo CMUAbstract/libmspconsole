@@ -3,8 +3,8 @@ EXEC = libmspconsole.a
 OBJECTS = \
 	io.o \
 
-include $(MAKER_ROOT)/Makefile.gcc
+DEPS += libwispbase
 
-$(eval $(call depend,libwispbase))
+include $(MAKER_ROOT)/Makefile.gcc
 
 VPATH = ../../src
