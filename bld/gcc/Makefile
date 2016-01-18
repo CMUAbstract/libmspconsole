@@ -5,7 +5,6 @@ OBJECTS = \
 
 include $(MAKER_ROOT)/Makefile.gcc
 
-CFLAGS += \
-	-I$(WISP_BASE_ROOT)
+$(eval $(call depend,libwispbase))
 
 VPATH = ../../src
