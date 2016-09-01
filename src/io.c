@@ -1,5 +1,5 @@
 #include <stdint.h>
-#include <wisp-base.h>
+#include <libwispbase/wisp-base.h>
 
 #include <stdlib.h>
 

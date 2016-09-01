@@ -1,10 +1,2 @@
-EXEC = libmspconsole.a
-
-OBJECTS = \
-	io.o \
-
-DEPS += libwispbase
-
+include ../Makefile
 include $(MAKER_ROOT)/Makefile.gcc
-
-VPATH = ../../src
