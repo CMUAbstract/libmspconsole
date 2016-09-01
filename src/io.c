@@ -3,19 +3,19 @@
 
 #include <stdlib.h>
 
-void printf_init()
+void mspconsole_init()
 {
     UART_init();
 }
 
-int putchar(int c)
+int io_putchar(int c)
 {
     uint8_t ch = c;
     UART_send(&ch, 1);
     return c;
 }
 
-int puts_no_newline(const char *ptr)
+int io_puts_no_newline(const char *ptr)
 {
     unsigned len = 0;
     const char *p = ptr;
@@ -27,14 +27,14 @@ int puts_no_newline(const char *ptr)
     return len;
 }
 
-int puts(const char *ptr)
+int io_puts(const char *ptr)
 {
     unsigned len;
 
-    len = puts_no_newline(ptr);
+    len = io_puts_no_newline(ptr);
 
     // Semantics of puts are annoying...
-    putchar('\n');
+    io_putchar('\n');
 
     return len;
 }
