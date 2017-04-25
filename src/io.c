@@ -9,7 +9,7 @@ void mspconsole_init()
 }
 
 int io_putchar(int c)
-{
+/*{
 	unsigned r12;
         __asm__ volatile ("mov r12, %0\n"
 			"mov r15, r12\n"
@@ -20,7 +20,7 @@ int io_putchar(int c)
 }
 
 int io_putchar_c(int c)
-{
+*/{
     uint8_t ch = c;
     UART_send(&ch, 1);
     return c;
